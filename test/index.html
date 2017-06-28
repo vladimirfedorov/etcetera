@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../etc.js"></script>
+    <style>
+        table { border-collapse: collapse; }
+        td { border: 1px solid #ccc; text-align: right; padding: 0 3px; }
+        tr.alternate { background-color: aliceblue; }
+        td.alternate { color: red; }
+        td.first { color: blue; }
+        td.last { color: green; }
+        .inline { display: inline-block; }
+        .red { background-color: #ff6e4c; border: 2px solid #f20000;  }
+        .green { background-color: #4ede34; border: 2px solid #029619;  }
+        .circle { width: 10px; height: 10px; border-radius: 7px; margin-right: 8px; margin-bottom: -2px;}
+        p { font-size: 14px; margin: 4px 0; }
+    </style>
+</head>
+<body>
+    <table id="tab1" width="100%">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+    </table>
+    <div id="form">
+        <span data-field="span"></span><br />
+        <input data-field="inputvalue" type="text"><br />
+        <textarea data-field="sometext"></textarea>
+    </div>
+
+    <div id="log" class="alice bob clara dan" data-name="data_name" another="aaa" zz="hello" ns:zero="zzeerroo">
+    </div>
+    <script>
+        // Test
+        var ok = '<p><span class="inline green circle"></span>{text}</p>',
+            not = '<p><span class="inline red circle"></span>{text}</p>',
+            log = document.getElementById('log'),
+            o = {},
+            v = ''
+
+        function write(passed, s) {
+            console.log((passed ? 'Passed: ' : 'Did not pass: ') + s)
+            log.innerHTML += (passed ? ok : not).replace(/{text}/g, s)
+        }
+
+        function test(name, expression, expected) {
+            write(expression === expected, name)
+        }
+
+        write(true, 'Example message - test passed')
+        write(false, 'Example message - test didn\'t pass')
+
+        log.innerHTML += '<br />'
+
+        try {
+            _e('#tab1 tr').even().class('alternate')
+            _e('#tab1 td').odd().class('alternate')
+            _e('#tab1 td').first().class('first')
+            _e('#tab1 td').last(1).class('last')
+        } catch(e) {
+            write(false, e)
+        }
+
+        test ('_t(string, object)', _t('some {a} template {b}', {a: 'simple', b: 'example'}), 'some simple template example')
+
+        _t('#form', 'data-field', {span: 'span element', inputvalue: 'input value', sometext: 'text area text'})
+        test ('_t(element, attr, object)', _e('#form')[0].innerHTML.length, 169)
+
+        o = _t('#form', 'data-field')
+        v = ''
+        for (var k in o) {
+            v += o[k]
+        }
+        test('_t(element, attr)', v.length, 37)
+
+        test('_c.isArray([])', _c.isArray([]), true)
+        test('_c.isArray({})', _c.isArray({}), false)
+        test('_c.isArray(123)', _c.isArray(123), false)
+        test('_c.isArray("abc")', _c.isArray('abc'), false)
+
+        test('_c.isObject([])', _c.isObject([]), false)
+        test('_c.isObject({})', _c.isObject({}), true)
+        test('_c.isObject(123)', _c.isObject(123), false)
+        test('_c.isObject("abc")', _c.isObject('abc'), false)
+
+        test('_c.isString([])', _c.isString([]), false)
+        test('_c.isString({})', _c.isString({}), false)
+        test('_c.isString(123)', _c.isString(123), false)
+        test('_c.isString("abc")', _c.isString('abc'), true)
+
+        test('_c.isNumber([])', _c.isNumber([]), false)
+        test('_c.isNumber({})', _c.isNumber({}), false)
+        test('_c.isNumber(123)', _c.isNumber(123), true)
+        test('_c.isNumber("abc")', _c.isNumber('abc'), false)
+
+        test('_c.cookie("some") (undefined)', _c.cookie('some'), undefined)
+        _c.cookie('some', 'value', 'max-age=1')
+        test('_c.cookie("some") (value)', _c.cookie('some'), 'value')
+
+        test('_c.merge([1,2], [2,3]) (combine)', _c.merge([1,2], [2,3]).length, [1,2,3].length)
+        test('_c.merge([1,2], [2,3], false) (subtract)', _c.merge([1,2], [2,3], false).length, [1].length)
+        test('_c.merge([1,2], [2,3], true) (toggle)', _c.merge([1,2], [2,3], true).length, [1,3].length)
+
+    </script>
+</body>
+</html>
