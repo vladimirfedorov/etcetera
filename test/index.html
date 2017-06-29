@@ -61,6 +61,7 @@
             log = document.getElementById('log'),
             o = {},
             v = '',
+            l = 0,
             bindedObject = {},
             anotherObject = {}
 
@@ -104,7 +105,11 @@
         test ('_t(string, object)', _t('some {a} template {b}', {a: 'simple', b: 'example'}), 'some simple template example')
 
         _t('#form', 'data-field', {span: 'span element', inputvalue: 'input value', sometext: 'text area text'})
-        test ('_t(element, attr, object)', _e('#form')[0].innerHTML.length, 169)
+        l = 0
+        _e('#form *').forEach(function(n) {
+            l += _e(n).val().length
+        })
+        test ('_t(element, attr, object)', l, 37)
 
         o = _t('#form', 'data-field')
         v = ''
