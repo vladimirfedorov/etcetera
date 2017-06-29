@@ -186,6 +186,26 @@ _c control
         delete: function(link, params, cb) {
             ajax('DELETE', link, params, cb)
         },
+        bindValue: function(o, property, node, cb) {
+            var n = _e(node)[0], val
+            if (n === undefined) return;
+            Object.defineProperty(o, property, {
+                enumerable: true,
+                set: function(v) {
+                    var changed = (val !== v)
+                    val = v
+                    _e(n).val(v)
+                    if (cb !== undefined && changed) cb(v)
+                },
+                get: function() {
+                    return val
+                }
+            })
+            n.oninput = function() {
+                o[property] = _e(n).val()
+                if (cb !== undefined) cb(o[property])
+            }
+        },
         isNumber: isNumber,
         isString: isString,
         isArray:  isArray,

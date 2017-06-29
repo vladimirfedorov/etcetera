@@ -44,7 +44,14 @@
         <input data-field="inputvalue" type="text"><br />
         <textarea data-field="sometext"></textarea>
     </div>
-
+    <div>
+        (1) Binded to an object:
+        <input id="inp" />
+        (2) set value to an object:
+        <input id="val" />
+        value from (2) should appear in (1):
+        <button onclick="changeValue()">Set</button>
+    </div>
     <div id="log" class="alice bob clara dan" data-name="data_name" another="aaa" zz="hello" ns:zero="zzeerroo">
     </div>
     <script>
@@ -53,7 +60,9 @@
             not = '<p><span class="inline red circle"></span>{text}</p>',
             log = document.getElementById('log'),
             o = {},
-            v = ''
+            v = '',
+            bindedObject = {},
+            anotherObject = {}
 
         function write(passed, s) {
             console.log((passed ? 'Passed: ' : 'Did not pass: ') + s)
@@ -63,6 +72,20 @@
         function test(name, expression, expected) {
             write(expression === expected, name)
         }
+
+        function changeValue() {
+            bindedObject.value = _e('#val').val()
+        }
+
+        _c.bindValue(bindedObject, 'value1', '#inp', function(v) {
+            write(true, 'New (1) value: ' + v)
+            bindedObject.value2 = v
+        })
+
+        _c.bindValue(bindedObject, 'value2', '#val', function(v) {
+            write(true, 'Changed (2) value: ' + v)
+            bindedObject.value1 = v
+        })
 
         write(true, 'Example message - test passed')
         write(false, 'Example message - test didn\'t pass')
