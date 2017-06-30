@@ -1,0 +1,15 @@
+{
+    "jscompiler": {
+        "outputs": [
+            {
+                "inputs": [
+                    "etc.js"
+                ],
+                "output": "etc.min.js",
+                "generateMap": false,
+                "mangle": true,
+                "isolate": false
+            }
+        ]
+    }
+}
