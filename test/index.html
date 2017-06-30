@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="../etc.js"></script>
     <style>
         table { border-collapse: collapse; }
@@ -94,10 +95,10 @@
         log.innerHTML += '<br />'
 
         try {
-            _e('#tab1 tr').even().class('alternate')
-            _e('#tab1 td').odd().class('alternate')
-            _e('#tab1 td').first().class('first')
-            _e('#tab1 td').last(1).class('last')
+            _e('#tab1 tr').even().css('alternate')
+            _e('#tab1 td').odd().css('alternate')
+            _e('#tab1 td').first().css('first')
+            _e('#tab1 td').last(1).css('last')
         } catch(e) {
             write(false, e)
         }

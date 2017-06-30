@@ -44,7 +44,7 @@ _c control
                 return result[n]
             }
         }
-        nodes.class = function(v) {
+        nodes.css = function(v) {
             var node = nodes[0] || {},
                 classes = []
             classes.add = function(c) {
@@ -183,7 +183,7 @@ _c control
         put: function(link, params, cb) {
             ajax('PUT', link, params, cb)
         },
-        delete: function(link, params, cb) {
+        del: function(link, params, cb) {
             ajax('DELETE', link, params, cb)
         },
         bindValue: function(o, property, node, cb) {
