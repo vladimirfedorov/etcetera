@@ -140,7 +140,7 @@
         test('_c.isNumber("abc")', _c.isNumber('abc'), false)
 
         test('_c.cookie("some") (undefined)', _c.cookie('some'), undefined)
-        _c.cookie('some', 'value', 'max-age=1')
+        _c.cookie('some', 'value', 'max-age=5')
         test('_c.cookie("some") (value)', _c.cookie('some'), 'value')
 
         test('_c.merge([1,2], [2,3]) (combine)', _c.merge([1,2], [2,3]).length, [1,2,3].length)
