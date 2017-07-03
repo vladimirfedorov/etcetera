@@ -7,6 +7,7 @@ _c control
 */
 (function() {
     'use strict';
+    window.ETCVERSION = 1.0
     // Elements
     window._e = function(q, context) {
         var nodes = []
