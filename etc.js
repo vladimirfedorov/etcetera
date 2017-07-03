@@ -298,7 +298,7 @@ _c control
     function isNumber(o) {
         return ((parseFloat(o) == o) || (parseInt(o) == o))
     }
-    // Chack if value is a string
+    // Check if value is a string
     function isString(o) {
         return (typeof o === 'string')
     }
