@@ -184,7 +184,7 @@ _c control
         put: function(link, params, cb) {
             ajax('PUT', link, params, cb)
         },
-        delete: function(link, params, cb) {
+        del: function(link, params, cb) {
             ajax('DELETE', link, params, cb)
         },
         bindValue: function(o, property, node, cb) {
