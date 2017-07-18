@@ -1,9 +1,10 @@
 /*
-etc.js library — small yet effective way to manipulate DOM
+    etc.js library — small yet effective way to manipulate DOM
+    _e element (html nodes) manipulation
+    _t templates
+    _c control
 
-_e element (html nodes) manipulation
-_t templates
-_c control
+    Copyright © 2017 Vladimir Fedorov. All rights reserved.
 */
 (function() {
     'use strict';
@@ -111,6 +112,7 @@ _c control
                 } else {
                     n.innerHTML = v
                 }
+                return nodes
             }
         }
         // Querying
@@ -121,11 +123,10 @@ _c control
             return new _e(context.querySelectorAll(q), context)
         } else if ((q instanceof NodeList) || (q instanceof HTMLCollection)) {
             Array.prototype.push.apply(nodes, Array.prototype.slice.call(q))
-            return nodes
         } else if (q instanceof Node) {
             Array.prototype.push.call(nodes, q)
-            return nodes
         }
+        nodes.node = nodes[0]
         return nodes
     }
     // Templates
