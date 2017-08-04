@@ -141,12 +141,28 @@
             }
             return result
         } else if (isString(t) && isString(q) && isObject(v)) {
-            _e('[' + q + ']', _e(t)[0]).forEach(function(n) {
+            _e('[' + q + ']', _e(t).node).forEach(function(n) {
                 var name = _e(n).attr(q)
-                if (v[name] !== undefined) _e(n).val(v[name])
+                if (isArray(v[name])) {
+                    n.childNodes.forEach(function(child) {
+                        var subnode
+                        if (child.tagName !== undefined) {
+                            subnode = child.cloneNode(true)
+                            n.innerHTML = "" // remove other nodes if any
+                            v[name].forEach(function(s, i) {
+                                var newNode = subnode.cloneNode(true)
+                                console.log(newNode)
+                                _e(newNode).val(s)
+                                n.appendChild(newNode)
+                            })
+                        }
+                    })
+                } else {
+                    if (v[name] !== undefined) _e(n).val(v[name])
+                }
             })
         } else if (isString(t) && isString(q) && v === undefined) {
-            _e('[' + q + ']', _e(t)[0]).forEach(function(n) {
+            _e('[' + q + ']', _e(t).node).forEach(function(n) {
                 var name = _e(n).attr(q)
                 o[name] = _e(n).val()
             })

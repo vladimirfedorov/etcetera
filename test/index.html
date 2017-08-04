@@ -43,7 +43,12 @@
     <div id="form">
         <span data-field="span"></span><br />
         <input data-field="inputvalue" type="text"><br />
-        <textarea data-field="sometext"></textarea>
+        <textarea data-field="sometext"></textarea><br />
+        <select id="form-options" data-field="options" style="width:150px;">
+            <option class="1"></option>
+            <option class="2"></option>
+            <option class="3"></option>
+        </select>
     </div>
     <div>
         (1) Binded to an object:
@@ -105,7 +110,7 @@
 
         test ('_t(string, object)', _t('some {a} template {b}', {a: 'simple', b: 'example'}), 'some simple template example')
 
-        _t('#form', 'data-field', {span: 'span element', inputvalue: 'input value', sometext: 'text area text'})
+        _t('#form', 'data-field', {span: 'span element', inputvalue: 'input value', sometext: 'text area text', options: ['A','b','cc','D']})
         l = 0
         _e('#form *').forEach(function(n) {
             l += _e(n).val().length
