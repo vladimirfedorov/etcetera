@@ -115,14 +115,14 @@
         _e('#form *').forEach(function(n) {
             l += _e(n).val().length
         })
-        test ('_t(element, attr, object)', l, 37)
+        test ('_t(element, attr, object)', l, 43) // element values + all values from array
 
         o = _t('#form', 'data-field')
         v = ''
         for (var k in o) {
             v += o[k]
         }
-        test('_t(element, attr)', v.length, 37)
+        test('_t(element, attr)', v.length, 38) // element values + one selected value
 
         test('_c.isArray([])', _c.isArray([]), true)
         test('_c.isArray({})', _c.isArray({}), false)
