@@ -216,7 +216,7 @@ hasOwnProperty alias
 
 Compare keyboard event with a human readable keyboard combination, for example:
 
-    window.keydown = function(e) {
+    window.onkeydown = function(e) {
         _c.keys(e, 'ctrl+s') // returns true when user presses Ctrl + S combination
     }
 
