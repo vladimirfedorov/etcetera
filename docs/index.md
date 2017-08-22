@@ -4,7 +4,7 @@ etc.js is a small javascript library with plenty of handy functions.
 
 ## Elements
 
-**_e** function performs quering of DOM elements and wraps them in an array, 
+**_e** function performs querying of DOM elements and wraps them in an array, 
 provides methods to iterate over the array, access attributes and css classes of that elements.
 
 ### _e(element) -> []
@@ -13,7 +13,7 @@ Wraps a single DOM element into array to give access to methods of the library
 
 ### _e(selector [,context]) -> []
 
-- **selector** is a string coontaining one or more CSS selectors separated by coma (more about CSS selectors [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors))
+- **selector** is a string containing one or more CSS selectors separated by coma (more about CSS selectors [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors))
 - **context** is a root element to search from; when omitted, the function returns all the elements in the document that are matched by any of the specified selectors
 
 Returns an array of elements that are matched by any of the specified selectors that implements a set of functions to iterate over elements:
@@ -42,7 +42,7 @@ Unwraps and returns the fist DOM element in the array
 
 Returns context-dependent value of the first element (`true`/`false` for checkbox `INPUT` elements, `.value` attribute value for `INPUT`, `SELECT`, `TEXTAREA` elements, `.innerHTML` for the rest elements)
 
-### .val(newVlaue)
+### .val(newValue)
 
 Sets the value of the first element (`.checked` attribute of checkbox `INPUT` elements, `.value` attribute of `INPUT`, `SELECT`, `TEXTAREA` elements, `.innerHTML` of the rest elements)
 
@@ -88,7 +88,7 @@ Returns the same array of CSS classes, allows chaining
 
 - **className** CSS class name
 
-Adds *className* if `.class` attribtute of the first element doesn't contain it, removes otherwise
+Adds *className* if `.class` attribute of the first element doesn't contain it, removes otherwise
 
 Returns the same array of CSS classes, allows chaining
 
@@ -96,7 +96,7 @@ Returns the same array of CSS classes, allows chaining
 
 - **className** CSS class name
 
-Returns `true` if `.class` atribute contains *className*, `false` otherwise
+Returns `true` if `.class` attribute contains *className*, `false` otherwise
 
 ## Templates
 
@@ -162,7 +162,7 @@ The function returns:
 
 - **object** an object 
 - **propertyName** a string, property name that will be added to the object
-- **element** DOM element, value of the element will be binded to `propertyName`
+- **element** DOM element, value of the element will be bound to `propertyName`
 - **callback** a callback function `callback(newValue)` 
 
 Performs bidirectional binding between `object.propertyName` and `element` values; 
