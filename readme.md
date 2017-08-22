@@ -190,6 +190,8 @@ The function merges two arrays, for example:
 - **object2** second object to be merged with the first one
 - **options** true to replace values in object1 with values from object2
 
+The function merges two objects, for example:
+
     var o1 = {a: 1, b: 2},
         o2 = {b: 3, c: 4}
     _c.merge(o1, o2) -> {a: 1, b: 2, c: 4}
