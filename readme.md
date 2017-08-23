@@ -1,7 +1,5 @@
 # etc.js
 
-# etc.js
-
 The library exports three functions: **`_e()`**, **`_t()`**, **`_c()`**. 
 
 **`_e()`** queries and wraps DOM elements into an array, 
