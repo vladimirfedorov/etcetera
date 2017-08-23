@@ -1,11 +1,28 @@
 # etc.js
 
-etc.js is a small javascript library with plenty of handy functions. 
+The library exports three functions: **`_e()`**, **`_t()`**, **`_c()`**. 
+
+**`_e()`** queries and wraps DOM elements into an array, 
+providing methods to take part of this array, 
+read attributes and work with CSS classes, 
+alongside with all the default Array() methods.
+
+**`_t()`** is a small and quite simple templating function. 
+It allows to process string templates, 
+fill in HTML forms with values from an object and take user-provided values back
+without any need for extra coding. 
+For example, you can fetch a record from a database as an object,
+pass it to this function, and after user is done with editing,
+take all the values as an object with one call and write it back.
+
+**`_c()`** controls all the aspects of web page behavior not covered with the previous two.
+AJAX requests, keyboard interaction, value checking are obvious essentials;
+bi-directional value binding is a powerful tool to bind the value of an HTML field with a value of a Javascript object.
 
 ## Elements
 
-**_e** function performs querying of DOM elements and wraps them in an array, 
-provides methods to iterate over the array, access attributes and css classes of that elements.
+**`_e`** function performs querying of DOM elements and wraps them in an array, 
+provides methods to iterate over the array, access attributes and CSS classes of that elements.
 
 ### _e(element) -> []
 
@@ -13,7 +30,7 @@ Wraps a single DOM element into array to give access to methods of the library
 
 ### _e(selector [,context]) -> []
 
-- **selector** is a string containing one or more CSS selectors separated by coma (more about CSS selectors [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors))
+- **selector** is a string containing one or more CSS selectors separated by comma (more about CSS selectors [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors))
 - **context** is a root element to search from; when omitted, the function returns all the elements in the document that are matched by any of the specified selectors
 
 Returns an array of elements that are matched by any of the specified selectors that implements a set of functions to iterate over elements:
@@ -26,17 +43,21 @@ Returns even elements in the array
 
 Returns odd elements in the array
 
-### .first() -> []
+### .first([n]) -> []
 
-Returns a new array containing the first element of the array
+- **n** (optional) number of elements 
 
-### .last() -> [] 
+Returns a new array containing *n* first elements of the array
 
-Returns a new array containing the last element of the array
+### .last([n]) -> [] 
+
+- **n** (optional) number of elements
+
+Returns a new array containing *n* last elements of the array
 
 ### .node -> Element
 
-Unwraps and returns the fist DOM element in the array
+Unwraps and returns the first DOM element in the array
 
 ### .val() -> String
 
@@ -46,17 +67,15 @@ Returns context-dependent value of the first element (`true`/`false` for checkbo
 
 Sets the value of the first element (`.checked` attribute of checkbox `INPUT` elements, `.value` attribute of `INPUT`, `SELECT`, `TEXTAREA` elements, `.innerHTML` of the rest elements)
 
----
-
-#### Attributes
-
 ### .attr() -> {}
 
 Returns an object with attributes of the first element
 
----
+### .attr(attributeName) -> Stirng
 
-#### Classes
+- **attributeName** name of an attribute
+
+Returns value of *attributeName* attribute or `undefined` if the attribute doesn't exist
 
 ### .css(classValue)
 
@@ -100,7 +119,7 @@ Returns `true` if `.class` attribute contains *className*, `false` otherwise
 
 ## Templates
 
-**_t** function provides templating for the library
+**`_t`** function provides templating for the library
 
 ### _t(template, values) -> String
 
@@ -156,7 +175,7 @@ The function returns:
 
 ## Control
 
-**_c** function provides general control over page behaviour
+**`_c`** function provides general control over page behavior
 
 ### .bindValue(object, propertyName, element, callback)
 
@@ -165,7 +184,7 @@ The function returns:
 - **element** DOM element, value of the element will be bound to `propertyName`
 - **callback** a callback function `callback(newValue)` 
 
-Performs bidirectional binding between `object.propertyName` and `element` values; 
+Performs bi-directional binding between `object.propertyName` and `element` values; 
 whenever `object.propertyName` changes, `element` value changes as well, 
 when user changes the `element` value, `object.propertyName` value reflects the change. In both cases `callback(newValue)` is called.
 
@@ -220,10 +239,6 @@ Compare keyboard event with a human readable keyboard combination, for example:
         _c.keys(e, 'ctrl+s') // returns true when user presses Ctrl + S combination
     }
 
----
-
-#### AJAX requests
-
 ### .get(link, params, callback)
 
 - **link** request URL
@@ -267,10 +282,6 @@ Performs PUT request
   - **requestObject** requestObject value
 
 Performs DELETE request
-
----
-
-#### Helper functions
 
 ### .isObject(value) -> Bool
 
