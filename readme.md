@@ -1,5 +1,7 @@
 # etc.js
 
+# etc.js
+
 The library exports three functions: **`_e()`**, **`_t()`**, **`_c()`**. 
 
 **`_e()`** queries and wraps DOM elements into an array, 
@@ -71,7 +73,7 @@ Sets the value of the first element (`.checked` attribute of checkbox `INPUT` el
 
 Returns an object with attributes of the first element
 
-### .attr(attributeName) -> Stirng
+### .attr(attributeName) -> String
 
 - **attributeName** name of an attribute
 
@@ -81,7 +83,7 @@ Returns value of *attributeName* attribute or `undefined` if the attribute doesn
 
 - **classValue** a string or an array of strings representing CSS classes
 
-This function applies CSS classes in *classValue* to all elements in the array
+This function applies CSS classes in *classValue* string or array to all elements in the array
 
 ### .css() -> []
 
