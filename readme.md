@@ -1,7 +1,5 @@
 # etc.js
 
-# etc.js
-
 The library exports three functions: **`_e()`**, **`_t()`**, **`_c()`**. 
 
 **`_e()`** queries and wraps DOM elements into an array, 
@@ -132,11 +130,11 @@ It's a simple function handy when you need to add values to a string, for exampl
 
 `_t('Hello {username}!', {username: 'Jerry'})` will return `Hello, Jerry!`
 
-### _t(element, prefix, values)
+### _t(selector, prefix, values)
 
 A more complex approach to templating
 
-- **element** a DOM element containing template elements
+- **selector** CSS selector of an element containing template elements
 - **attribute** elements data-attribute for field names
 - **values** an object containing field values
 
@@ -155,9 +153,9 @@ Can be filled in with values this way:
     _t(_e('form-fields').node, 'field-name', {username: '', prefers: ['tea', 'coffee']})
 
 
-### _t(element, prefix) -> {}
+### _t(selector, prefix) -> {}
 
-- **element** a DOM element containing template elements
+- **selector** CSS selector of an element containing template elements
 - **attribute** elements data-attribute for field names
 
 Returns an object with form values, for the example above, after user enters his name and selects what he prefers:
